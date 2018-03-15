@@ -1,0 +1,9 @@
+module.exports={
+    "nodePort":3000,
+    "PORT":'3000',
+    "MYSQL_LOCALHOST":"localhost",
+    "MYSQL_USER":"root",
+    "MYSQL_PASSWORD":"root",
+    "MYSQL_DBNAME":"vats",
+    "secretKey":"vats_db_rest_api"
+};
