@@ -19,7 +19,7 @@ if(process.env.NODE_ENV!='production'){
 }
 app.use(function (req, res, next){
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://192.168.1.9:8100');
+    res.setHeader('Access-Control-Allow-Origin', 'http://0.0.0.0:8100');
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     // Request headers you wish to allow
