@@ -106,6 +106,8 @@ router.route("/login")
             //No emailId matched
             response.sendStatus(403);    
         }else{
+            console.log("resPassword",result[0].password);
+                        console.log("Password",password);
             //EmailId matched .Check Password
             if(result[0].password==password){
                 //Password Check success generate JWT
