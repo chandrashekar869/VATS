@@ -48,17 +48,16 @@ app.use('/api',router);
 router.route('/users')
 //for create user in CRUD generate a POST to http://hostname:port/api/users
 .post(function(req,res){
-    
-    console.log(   Object.keys(req.body));
-    reqData=JSON.parse(req.body);
-    
-    var reqData=req.body.data.split("::");
+  
+    reqData= Object.keys(req.body)
+ 
    new mysqlOps().create("INSERT INTO user_details SET ?",{    
-       "user_name":reqData[0],
-        "address":reqData[1],
-        "mob_number":reqData[2],
-        "email_id":reqData[3],
-        "password":reqData[4]
+       "user_name":reqData[1],
+        "address":reqData[2],
+        "mob_number":reqData[3],
+        "email_id":reqData[4],
+        "password":reqData[5],
+       "token":""
     },
     function(result){
         var response=res;
