@@ -52,7 +52,6 @@ router.route('/users')
     reqData= Object.keys(req.body)
  
    new mysqlOps().create("INSERT INTO user_details SET ?",{   
-      "password":password.splice(email.length-1,1)
        "user_name":reqData[1],
         "address":reqData[2],
         "mob_number":reqData[3],
@@ -99,8 +98,9 @@ router.route("/login")
     new mysqlOps().selectSingleUser("Select * from user_details where email_id='"+req.body.object.email_id+"' and password='"+req.body.object.password+"'",
     req.body.object.email_id,
     function(result){
-        var email_id=req.body.object.email_id;
-        var password=req.body.object.password;
+        var email_id=req.body.object.email_id.splice(req.body.object.email_id.length-1,1);
+        var password=req.body.object.password.splice(req.body.object.password.length-1,1);
+        console.log(email,password);
         var response=res;
         if(result.length==0){
             //No emailId matched
