@@ -100,7 +100,7 @@ router.route("/login")
     function(result){
         var email_id=req.body.object.email_id.slice(req.body.object.email_id.length-1,1);
         var password=req.body.object.password.slice(req.body.object.password.length-1,1);
-        console.log(email,password);
+        console.log(email_id,password);
         var response=res;
         if(result.length==0){
             //No emailId matched
