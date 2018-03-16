@@ -55,8 +55,8 @@ router.route('/users')
        "user_name":reqData[1],
         "address":reqData[2],
         "mob_number":reqData[3],
-        "email_id":reqData[4].splice(reqData[4]-1,1),
-        "password":reqData[5].splice(reqData[5]-1,1),
+        "email_id":reqData[4],
+        "password":reqData[5],
        "token":""
     },
     function(result){
@@ -98,8 +98,8 @@ router.route("/login")
     new mysqlOps().selectSingleUser("Select * from user_details where email_id='"+req.body.object.email_id+"' and password='"+req.body.object.password+"'",
     req.body.object.email_id,
     function(result){
-        var email_id=req.body.object.email_id.splice(req.body.object.email_id.length-1,1);
-        var password=req.body.object.password.splice(req.body.object.password.length-1,1);
+        var email_id=req.body.object.email_id.slice(req.body.object.email_id.length-1,1);
+        var password=req.body.object.password.slice(req.body.object.password.length-1,1);
         console.log(email,password);
         var response=res;
         if(result.length==0){
