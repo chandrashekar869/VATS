@@ -48,7 +48,8 @@ app.use('/api',router);
 router.route('/users')
 //for create user in CRUD generate a POST to http://hostname:port/api/users
 .post(function(req,res){
-    console.log(req.body);
+    
+    console.log(   Object.keys(req.body));
     reqData=JSON.parse(req.body);
     
     var reqData=req.body.data.split("::");
