@@ -98,8 +98,8 @@ router.route("/login")
     new mysqlOps().selectSingleUser("Select * from user_details where email_id=? and password=?",
     [req.body.object.email_id.substring(0,req.body.object.email_id.length-1),req.body.object.password.substring(0,req.body.object.password.length-1)],
     function(result){
-        var email_id=req.body.object.email_id;
-        var password=req.body.object.password;
+        var email_id=req.body.object.email_id.substring(0,req.body.object.email_id.length-1);
+        var password=req.body.object.password.substring(0,req.body.object.password.length-1);
         console.log(email_id,password);
         var response=res;
         if(result.length==0){
