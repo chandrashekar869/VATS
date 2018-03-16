@@ -45,14 +45,16 @@ res.json({
 });
 });
 app.use('/api',router);
-router.route('/users')
+router.route('/users/:data')
 //for create user in CRUD generate a POST to http://hostname:port/api/users
-.post(function(req,res){
+.get(function(req,res){
+   var reqData=req.params("data").split("::");
    new mysqlOps().create("INSERT INTO user_details SET ?",{
-        "user_name":cryptoJs.HmacSHA1(req.body.user_name,key).toString(CryptoJS.enc.Base64),
-        "address":cryptoJs.HmacSHA1(req.body.address,key).toString(CryptoJS.enc.Base64),
-        "mob_number":cryptoJs.HmacSHA1(req.body.mob_number,key).toString(CryptoJS.enc.Base64),
-        "email_id":cryptoJs.HmacSHA1(req.body.email_id,key).toString(CryptoJS.enc.Base64)
+        "user_name":cryptoJs.HmacSHA1(reqData[0],key).toString(CryptoJS.enc.Base64),
+        "address":cryptoJs.HmacSHA1(reqData[1],key).toString(CryptoJS.enc.Base64),
+        "mob_number":cryptoJs.HmacSHA1(reqData[2],key).toString(CryptoJS.enc.Base64),
+        "email_id":cryptoJs.HmacSHA1(reqData[3],key).toString(CryptoJS.enc.Base64),
+        "password":cryptoJs.HmacSHA1(reqData[4],key).toString(CryptoJS.enc.Base64)
     },
     function(result){
         var response=res;
