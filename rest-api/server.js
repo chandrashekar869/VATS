@@ -51,12 +51,13 @@ router.route('/users')
   
     reqData= Object.keys(req.body)
  
-   new mysqlOps().create("INSERT INTO user_details SET ?",{    
+   new mysqlOps().create("INSERT INTO user_details SET ?",{   
+      "password":password.splice(email.length-1,1)
        "user_name":reqData[1],
         "address":reqData[2],
         "mob_number":reqData[3],
-        "email_id":reqData[4],
-        "password":reqData[5],
+        "email_id":reqData[4].splice(reqData[4]-1,1),
+        "password":reqData[5].splice(reqData[5]-1,1),
        "token":""
     },
     function(result){
