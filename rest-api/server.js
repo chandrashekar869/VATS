@@ -95,7 +95,7 @@ router.route("/login")
 .post(function(req,res){
     //Select user from db based on emailid from request body
     console.log("Hey");
-    new mysqlOps().selectSingleUser("Select * from user_details where email_id="+req.body.object.email_id+" and password="+req.body.object.password,
+    new mysqlOps().selectSingleUser("Select * from user_details where email_id='"+req.body.object.email_id+"' and password='"+req.body.object.password+"'",
     req.body.object.email_id,
     function(result){
         var email_id=req.body.object.email_id;
